@@ -73,12 +73,12 @@ function Cadastrar() {
         <form>
           <div className="form-floating mb-3">
             <input type="text" className="form-control" id="nome" placeholder="Nome" />
-            <label htmlFor="nome">Nome</label>
+            <label htmlFor="nome">Nome Completo</label>
           </div>
 
           <div className="form-floating mb-3">
             <input type="text" className="form-control" id="rua" placeholder="Rua" />
-            <label htmlFor="rua">Rua</label>
+            <label htmlFor="rua">Logradouro</label>
           </div>
 
           <div className="row mb-3">
@@ -108,10 +108,21 @@ function Cadastrar() {
           </div>
 
           <div className="row mb-3">
-            <div className="col form-floating">
+            <div className="col-md-4 form-floating">
               <input type="text" className="form-control" id="telefone" placeholder="Telefone" />
               <label htmlFor="telefone">Telefone</label>
             </div>
+            <div className="col-md-3 form-floating">
+              <input type="text" className="form-control" id="ddd" placeholder="DDD" />
+              <label htmlFor="ddd">DDD</label>
+            </div>
+            <div className="col-md-5 form-floating">
+              <input type="email" className="form-control" id="email" placeholder="Email" />
+              <label htmlFor="email">Email</label>
+            </div>
+          </div>
+
+          <div className="row mb-3">
             <div className="col d-flex align-items-center">
               <p className="mb-0 me-2">Número informado é WhatsApp?</p>
               <div className="form-check me-3">
@@ -125,18 +136,16 @@ function Cadastrar() {
             </div>
           </div>
 
-          {/* Campo para anexar imagem */}
           <div className="mb-3">
             <label className="form-label">Foto de Perfil</label>
             <input type="file" id="img-input" onChange={handleImageChange} className="form-control" />
           </div>
 
-          {/* Campo para pré-visualização da imagem (placeholder) */}
           <div className="mb-3">
             <p>Pré-visualização:</p>
             <img 
-              id= "imgPreview"
-              src= {preview} 
+              id="imgPreview"
+              src={preview} 
               alt="Pré-visualização" 
               className="img-thumbnail" 
               style={{ maxWidth: '200px' }} 
@@ -146,6 +155,7 @@ function Cadastrar() {
           <button type="submit" className="btn btn-primary">Cadastrar</button>
         </form>
       </div>
+
     </>
   )
 }
