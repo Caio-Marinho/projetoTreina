@@ -101,7 +101,7 @@ function Cadastrar() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Dados do formulário:", {formacoes });
+    console.log("Dados do formulário:", { formacoes });
     console.log("Experiências:", experiencias);
     // Aqui você pode enviar os dados para o backend, se necessário.
   };
