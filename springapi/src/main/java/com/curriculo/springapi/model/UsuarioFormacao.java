@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "tb_usuario_formacao")
-public class UsuarioFormcacao {
+public class UsuarioFormacao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

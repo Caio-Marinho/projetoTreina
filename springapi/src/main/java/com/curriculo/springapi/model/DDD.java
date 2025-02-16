@@ -19,6 +19,6 @@ public class DDD {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "ddd", unique = true, nullable = false)
+    @Column(name = "ddd", unique = true, nullable = false, length = 4)
     private String ddd;
 }

@@ -7,10 +7,11 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Usuario {
+public class RedeSocial {
     
     private int id;
-    private String nome;
-    private String email;
-    private String foto;
+    private String github;
+    private String linkedin;
+    private String instagram;
+    private String whatsapp;
 }
