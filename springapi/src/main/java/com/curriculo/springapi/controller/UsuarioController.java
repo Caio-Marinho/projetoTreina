@@ -25,13 +25,13 @@ public class UsuarioController {
     
     @PostMapping
     public ResponseEntity<Usuario> criaUsuario(@RequestBody Usuario usuario) {
-        if(UsuarioRepository.findByEmail(usuario.getEmail()).isPresent()) {
+        if(usuarioRepository.findByEmail(usuario.getEmail()).isPresent()) {
             return ResponseEntity.status(HttpStatus.CONFLICT).build();
         };
-        return ResponseEntity.status(HttpStatus.CREATED).body(UsuarioRepository.save(usuario));
+        return ResponseEntity.status(HttpStatus.CREATED).body(usuarioRepository.save(usuario));
     }
 
     @Autowired
-    private UsuarioRepository UsuarioRepository;
+    private UsuarioRepository usuarioRepository;
     
 }

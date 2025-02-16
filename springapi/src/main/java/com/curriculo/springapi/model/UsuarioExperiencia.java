@@ -5,7 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor; 
@@ -20,11 +20,11 @@ public class UsuarioExperiencia {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
     
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "id_experiencia")
     private Experiencia experiencia;
 }

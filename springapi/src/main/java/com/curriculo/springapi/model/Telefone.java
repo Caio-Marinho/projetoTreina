@@ -5,7 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,7 +24,7 @@ public class Telefone {
     @Column(name = "telefone",unique=true, nullable = false,length = 9)
     private String telefone;
 
-    @OneToOne
-    @JoinColumn(name = "id_ddd")
+    @ManyToOne
+    @JoinColumn(name = "id_ddd", nullable = false)
     private DDD ddd;
 }
