@@ -86,7 +86,6 @@ async function enviar() {
       })
       .then(response => response.json())
       .then(data => {
-        console.log(data);
         endereco = data;
       })
     }
