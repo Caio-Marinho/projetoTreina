@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import { useState } from 'react';
-
+import {enviar} from './assets/js/post.js'
 import './App.css'
 
 
@@ -64,6 +64,7 @@ function Cadastrar() {
   // Atualiza a pré-visualização da imagem
   const handleImageChange = (event) => {
     const file = event.target.files[0];
+    console.log(file)
     if (file) {
       setPreview(URL.createObjectURL(file));
     }
@@ -101,6 +102,7 @@ function Cadastrar() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    enviar();
     console.log("Dados do formulário:", { formacoes });
     console.log("Experiências:", experiencias);
     // Aqui você pode enviar os dados para o backend, se necessário.
@@ -179,15 +181,15 @@ function Cadastrar() {
         <div className="row mb-3">
           <div className="col-md-4 form-floating">
             <input type="text" className="form-control" id="LinkedIn" placeholder="LinkedIn" />
-            <label htmlFor="telefone">LinkedIn</label>
+            <label htmlFor="LinkedIn">LinkedIn</label>
           </div>
           <div className="col-md-3 form-floating">
             <input type="text" className="form-control" id="Github" placeholder="Github" />
-            <label htmlFor="ddd">Github</label>
+            <label htmlFor="Github">Github</label>
           </div>
           <div className="col-md-5 form-floating">
             <input type="email" className="form-control" id="Instagram" placeholder="Instagram" />
-            <label htmlFor="email">Instagram</label>
+            <label htmlFor="Instagram">Instagram</label>
           </div>
         </div>
 
@@ -338,7 +340,7 @@ function Cadastrar() {
           />
         </div>
 
-        <button type="submit" className="btn btn-primary">Cadastrar</button>
+        <button type="submit" id="enviar" className="btn btn-primary">Cadastrar</button>
       </form>
     </div>
     </>

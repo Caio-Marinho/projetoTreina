@@ -2,7 +2,7 @@ package com.curriculo.springapi.Service;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
+import com.curriculo.springapi.image.Image;
 import com.curriculo.springapi.model.Endereco;
 import com.curriculo.springapi.model.Usuario;
 import com.curriculo.springapi.model.RedeSocial;
@@ -21,6 +21,9 @@ public class Service {
             return ResponseEntity.status(HttpStatus.OK).body(usuario);
 
         };
+        System.out.println("hello");
+        System.out.println(Image.saveImageFromBase64(usuario.getFoto()));
+        Image.saveImageFromBase64(usuario.getFoto());
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioRepository.save(usuario));
     }
 
