@@ -48,7 +48,7 @@ async function enviar() {
       })
       .then(response => response.json())
       .then(data => {
-        usuario = data;
+        usuario = data[0];
       })
     }
     // 2️⃣ Cadastrar Endereço
@@ -86,7 +86,7 @@ async function enviar() {
       })
       .then(response => response.json())
       .then(data => {
-        endereco = data;
+        endereco = data[0];
       })
     }
     // 3️⃣ Associar Usuário ao Endereço
@@ -491,7 +491,7 @@ function Indentificao() {
             <p1><b>Telefone: </b><a href="http://wa.me/5581979056770" target="_blank">
             (81) 9 7905-6770 
             </a></p1>
-            <img src="../public/img/icons8-whatsapp-48.png" alt="" />
+            <img src="/img/icons8-whatsapp-48.png" alt="" />
           </div>
         </div>
       </div>
