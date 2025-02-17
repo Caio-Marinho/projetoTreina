@@ -20,8 +20,7 @@ public class Service {
     
     public static ResponseEntity<Usuario> verificaEmail(Usuario usuario, UsuarioRepository usuarioRepository){
         if(usuarioRepository.findByEmail(usuario.getEmail()).isPresent()) {
-            return ResponseEntity.status(HttpStatus.OK).body(usuario);
-
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
         };
         usuario.setCaminho(Image.saveImageFromBase64(usuario.getFoto()));
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioRepository.save(usuario));
@@ -29,8 +28,8 @@ public class Service {
 
     public static ResponseEntity<Endereco>  cadastrarEndereco(Endereco endereco, EnderecoRepository enderecoRepository){
         if(enderecoRepository.buscarEnderecos(endereco.getCep(), endereco.getLogradouro(), endereco.getBairro(), endereco.getNumero(), endereco.getCidade(), endereco.getUf()).size() > 0) {
-            return ResponseEntity.status(HttpStatus.OK).body(endereco);
-        } else if (endereco.getUf().length() > 2){
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+        } else if (endereco.getUf().length() > 2 || endereco.getUf().length() < 2){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(enderecoRepository.save(endereco));

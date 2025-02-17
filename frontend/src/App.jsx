@@ -15,7 +15,7 @@ async function enviar() {
   const foto = document.getElementById("img-input").files[0];
   let usuario = "";
   let endereco= "";
-
+  let status = "";
   let baseString64 = "";
 
   // Lê a imagem em base64 (se houver)
@@ -34,13 +34,23 @@ async function enviar() {
         "foto": baseString64
       }),
     })
-    .then(response => response.json())
+    .then(response => {status = response.status; return response.json()})
     .then(data => {
-      console.log(data);
       usuario = data;
     })
-    console.log("Usuário cadastrado:", usuario);
-
+    .catch(error => {
+      console.error(error);
+    })
+    if (status == 409) {
+      await fetch("http://localhost:8080/usuario", {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      })
+      .then(response => response.json())
+      .then(data => {
+        usuario = data;
+      })
+    }
     // 2️⃣ Cadastrar Endereço
     await fetch("http://localhost:8080/endereco", {
       method: "POST",
@@ -55,17 +65,31 @@ async function enviar() {
       }),
     })
     .then(response => {
-      if (!response.ok) {
+      if (response.status == 400) {
+        status = response.status;
         alert("Unidade Federativa (UF) Inválida!");
     } else {
+      status = response.status
       return response.json();
     }
   })
     .then(data => {
-      console.log(data);
       endereco = data;
     })
-    console.log("Endereco cadastrado:", endereco);
+    .catch(error => {
+      console.error(error);
+    })
+    if (status == 409) {
+      await fetch("http://localhost:8080/endereco", {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        endereco = data;
+      })
+    }
     // 3️⃣ Associar Usuário ao Endereço
     await fetch("http://localhost:8080/usuarioendereco", {
       method: "POST",
@@ -84,6 +108,7 @@ async function enviar() {
     console.error("Erro geral:", error.message);
   }
 }
+
 
 // Converte imagem para Base64 usando Promise
 function lerImagemBase64(foto) {
