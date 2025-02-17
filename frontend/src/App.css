@@ -4,6 +4,14 @@ body {
   width: 100%;
 }
 
+.centralizar{
+  display: flex;
+  justify-content: center;
+  align-items: space-between;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
 .cor{
   background: linear-gradient(90deg, gray 0%, silver 100%);
   color: black;
@@ -25,6 +33,7 @@ body {
 
 .image {
    border-radius: 50%;
+   width: 100px;
 }
 
 .espaco {
@@ -92,7 +101,7 @@ body {
 .footer{
   position: relative;
   top: 10px;
-  left: 30px;
+  left: 5px;
   display: flex;
   justify-content: center;
   align-items: center;

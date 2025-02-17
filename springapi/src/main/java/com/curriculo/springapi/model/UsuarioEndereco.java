@@ -22,10 +22,10 @@ public class UsuarioEndereco {
     private int id;
 
     @ManyToOne
-    @JoinColumn(name = "id_usuario")
+    @JoinColumn(name = "id_usuario", nullable = false)
     private Usuario usuario;
 
     @ManyToOne
-    @JoinColumn(name = "id_endereco")
+    @JoinColumn(name = "id_endereco", nullable = false)
     private Endereco endereco;
 }

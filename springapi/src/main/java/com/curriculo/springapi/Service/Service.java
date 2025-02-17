@@ -8,11 +8,13 @@ import com.curriculo.springapi.model.Usuario;
 import com.curriculo.springapi.model.RedeSocial;
 import com.curriculo.springapi.model.Telefone;
 import com.curriculo.springapi.model.DDD;
+import com.curriculo.springapi.model.UsuarioEndereco;
 import com.curriculo.springapi.repository.UsuarioRepository;
 import com.curriculo.springapi.repository.EnderecoRepository;
 import com.curriculo.springapi.repository.RedeSocialRepository;
 import com.curriculo.springapi.repository.DDDRepository;
 import com.curriculo.springapi.repository.TelefoneRepository;
+import com.curriculo.springapi.repository.UsuarioEnderecoRepository;
 
 public class Service {
     
@@ -21,15 +23,15 @@ public class Service {
             return ResponseEntity.status(HttpStatus.OK).body(usuario);
 
         };
-        System.out.println("hello");
-        System.out.println(Image.saveImageFromBase64(usuario.getFoto()));
-        Image.saveImageFromBase64(usuario.getFoto());
+        usuario.setCaminho(Image.saveImageFromBase64(usuario.getFoto()));
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioRepository.save(usuario));
     }
 
     public static ResponseEntity<Endereco>  cadastrarEndereco(Endereco endereco, EnderecoRepository enderecoRepository){
         if(enderecoRepository.buscarEnderecos(endereco.getCep(), endereco.getLogradouro(), endereco.getBairro(), endereco.getNumero(), endereco.getCidade(), endereco.getUf()).size() > 0) {
             return ResponseEntity.status(HttpStatus.OK).body(endereco);
+        } else if (endereco.getUf().length() > 2){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(enderecoRepository.save(endereco));
     }
@@ -56,4 +58,8 @@ public class Service {
         return ResponseEntity.status(HttpStatus.CREATED).body(telefoneRepository.save(telefone));
     }
 
+    public static ResponseEntity<UsuarioEndereco> cadastroMoradia(UsuarioEndereco usuarioEndereco, UsuarioEnderecoRepository usuarioEnderecoRepository){
+        
+        return ResponseEntity.status(HttpStatus.CREATED).body(usuarioEnderecoRepository.save(usuarioEndereco));
+    }
 }

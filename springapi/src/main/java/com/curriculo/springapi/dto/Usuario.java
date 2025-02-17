@@ -12,5 +12,6 @@ public class Usuario {
     private int id;
     private String nome;
     private String email;
-    private String foto;
+    private String foto_base64;
+    private String caminho;
 }
