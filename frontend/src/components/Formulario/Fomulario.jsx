@@ -53,8 +53,8 @@ function Formulario() {
   
     return (
       <>
-      <div className="container mt-5">
-        <h2 className="mb-4">Cadastro</h2>
+      <div className="container mt-5 ">
+        <h2 className="mb-4 margem">Cadastro</h2>
         <form onSubmit={handleSubmit}>
           {/* Campos básicos */}
           <div className="form-floating mb-3">

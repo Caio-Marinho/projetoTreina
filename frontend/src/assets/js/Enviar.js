@@ -1,3 +1,5 @@
+import { Alert } from "bootstrap";
+
 async function enviar() {
 
     const nome = document.getElementById("nome").value;
@@ -9,9 +11,13 @@ async function enviar() {
     const cidade = document.getElementById("cidade").value;
     const uf = document.getElementById("uf").value;
     const foto = document.getElementById("img-input").files[0];
+    const telefone = document.getElementById("telefone").value;
+    const ddd = document.getElementById("ddd").value;
     let usuario = "";
     let endereco= "";
     let status = "";
+    let ddd_tb = "";
+    let telefone_tb = "";
     let baseString64 = "";
   
     // Lê a imagem em base64 (se houver)
@@ -34,9 +40,8 @@ async function enviar() {
       .then(data => {
         usuario = data;
       })
-      .catch(error => {
-        console.error(error);
-      })
+      
+
       if (status == 409) {
         await fetch("http://localhost:8080/usuario", {
           method: "GET",
@@ -46,6 +51,7 @@ async function enviar() {
         .then(data => {
           usuario = data[0];
         })
+        
       }
       // 2️⃣ Cadastrar Endereço
       await fetch("http://localhost:8080/endereco", {
@@ -72,9 +78,8 @@ async function enviar() {
       .then(data => {
         endereco = data;
       })
-      .catch(error => {
-        console.error(error);
-      })
+      
+
       if (status == 409) {
         await fetch("http://localhost:8080/endereco", {
           method: "GET",
@@ -83,6 +88,9 @@ async function enviar() {
         .then(response => response.json())
         .then(data => {
           endereco = data[0];
+        })
+        .catch(error => {
+          console.log("Erro: ",error);
         })
       }
       // 3️⃣ Associar Usuário ao Endereço
@@ -98,6 +106,65 @@ async function enviar() {
       .then(data => {
         console.log(data);
       })
+      
+      // 4️⃣ Cadastrar Telefone
+
+      await fetch("http://localhost:8080/ddd", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          "ddd":ddd
+        })
+      })
+      .then(response => {status=response.status; return response.json()})
+      .then(data => {
+        console.log(data);
+        ddd_tb = data;
+      })
+
+      if(status === 409){
+        await fetch("http://localhost:8080/ddd", {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        })
+        .then(response => response.json())
+        .then(data => {
+          ddd_tb = data[0];
+        })
+      }
+
+      await fetch("http://localhost:8080/telefone", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          "telefone":telefone,
+          "ddd":ddd_tb
+        })
+    })
+    .then(response =>{status = response.status ;return response.json()})
+    .then(data => {
+      console.log(data);
+      telefone_tb = data;
+    })
+
+    if (status == 500){
+      alert("Numero Incorreto! Deve conter 9 digitos!");
+    } else if (status == 409){
+      alert("Telefone ja cadastrado!");
+    }
+
+    await fetch("http://localhost:8080/usuariotelefone", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        "usuario":usuario,
+        "telefone":telefone_tb
+      }),
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+    })
   
     } catch (error) {
       console.error("Erro geral:", error.message);

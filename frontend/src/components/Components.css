@@ -15,3 +15,9 @@
     top: 10px;
     left: 10px;
   }
+
+.remover {
+  text-decoration: none;
+  color: inherit;
+}
+  

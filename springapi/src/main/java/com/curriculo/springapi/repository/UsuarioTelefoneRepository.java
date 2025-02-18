@@ -7,10 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import com.curriculo.springapi.model.Telefone;
+import com.curriculo.springapi.model.UsuarioTelefone;
 
-public interface TelefoneRepository extends JpaRepository<Telefone,Integer> {
+public interface UsuarioTelefoneRepository extends JpaRepository<UsuarioTelefone, Integer> {
     
-    @Query("SELECT t FROM tb_telefone t WHERE t.telefone = :telefone")
-    List<Telefone> buscarNumero(@Param("telefone") String telefone);
 }

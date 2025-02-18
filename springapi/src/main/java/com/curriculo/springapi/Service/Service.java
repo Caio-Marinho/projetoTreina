@@ -9,12 +9,14 @@ import com.curriculo.springapi.model.RedeSocial;
 import com.curriculo.springapi.model.Telefone;
 import com.curriculo.springapi.model.DDD;
 import com.curriculo.springapi.model.UsuarioEndereco;
+import com.curriculo.springapi.model.UsuarioTelefone;
 import com.curriculo.springapi.repository.UsuarioRepository;
 import com.curriculo.springapi.repository.EnderecoRepository;
 import com.curriculo.springapi.repository.RedeSocialRepository;
 import com.curriculo.springapi.repository.DDDRepository;
 import com.curriculo.springapi.repository.TelefoneRepository;
 import com.curriculo.springapi.repository.UsuarioEnderecoRepository;
+import com.curriculo.springapi.repository.UsuarioTelefoneRepository;
 
 public class Service {
     
@@ -45,14 +47,14 @@ public class Service {
 
     public static ResponseEntity<DDD> cadastrarDDD(DDD ddd, DDDRepository dddRepository){
         if (dddRepository.buscarDDD(ddd.getDdd()).size()>0){
-            return ResponseEntity.status(HttpStatus.OK).body(ddd);
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(dddRepository.save(ddd));
     }
 
     public static ResponseEntity<Telefone> cadastrarTelefone(Telefone telefone, TelefoneRepository telefoneRepository){
         if (telefoneRepository.buscarNumero(telefone.getTelefone()).size()>0){
-            return ResponseEntity.status(HttpStatus.OK).body(telefone);
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(telefoneRepository.save(telefone));
     }
@@ -60,5 +62,10 @@ public class Service {
     public static ResponseEntity<UsuarioEndereco> cadastroMoradia(UsuarioEndereco usuarioEndereco, UsuarioEnderecoRepository usuarioEnderecoRepository){
         
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioEnderecoRepository.save(usuarioEndereco));
+    }
+
+    public static ResponseEntity<UsuarioTelefone> cadastroTelefone(UsuarioTelefone usuarioTelefone, UsuarioTelefoneRepository usuarioTelefoneRepository){
+        
+        return ResponseEntity.status(HttpStatus.CREATED).body(usuarioTelefoneRepository.save(usuarioTelefone));
     }
 }

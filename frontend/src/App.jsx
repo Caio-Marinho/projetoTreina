@@ -34,10 +34,12 @@ function Visualizar() {
   return(
     <>
     <div className="limite">
-      <Identificacao />
-      <Formacao />
-      <Experiencia />
-      <Redes />
+      <div className="curriculo" id="curriculo">
+        <Identificacao />
+        <Formacao />
+        <Experiencia />
+        <Redes />
+      </div>
       <Footer/>
     </div>  
     </>

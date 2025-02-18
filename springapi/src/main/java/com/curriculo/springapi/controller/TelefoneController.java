@@ -18,6 +18,7 @@ public class TelefoneController {
     public ResponseEntity<Telefone> createTelefone(@RequestBody Telefone telefone) {
         return Service.cadastrarTelefone(telefone,telefoneRepository);
     }
+
     @Autowired
     private TelefoneRepository telefoneRepository;
 }

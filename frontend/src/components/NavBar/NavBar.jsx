@@ -1,5 +1,6 @@
 import './NavBar.css';
-import MyThemeSwitcher from '../ModoEscuro/MyThemeSwitcher'
+import MyThemeSwitcher from '../ModoEscuro/MyThemeSwitcher';
+import { gerarPDF } from '../utils/GerarPDF';
 
 function NavBar() {
   return(
@@ -22,7 +23,7 @@ function NavBar() {
           <a id="visualizar" className="nav-link" href="/visualizar">Visualizar</a>
         </li>
         <li className="nav-item centralizar">
-          <a className="nav-link" href="#">Imprimir</a>
+          <button className="nav-link" onClick={() => gerarPDF('curriculo') }>Imprimir</button>
         </li>
       </ul>
       <MyThemeSwitcher/>
