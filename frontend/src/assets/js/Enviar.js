@@ -1,5 +1,3 @@
-import { Alert } from "bootstrap";
-
 async function enviar() {
 
     const nome = document.getElementById("nome").value;
@@ -13,6 +11,10 @@ async function enviar() {
     const foto = document.getElementById("img-input").files[0];
     const telefone = document.getElementById("telefone").value;
     const ddd = document.getElementById("ddd").value;
+    const whatsapp = document.querySelector('input[name="whatsapp"]:checked').value;
+    const linkedin = document.getElementById('linkedin').value;
+    const instagram = document.getElementById('instagram').value;
+    const github = document.getElementById('github').value;
     let usuario = "";
     let endereco= "";
     let status = "";
@@ -165,6 +167,37 @@ async function enviar() {
     .then(data => {
       console.log(data);
     })
+
+    if(whatsapp == "sim"){
+      await fetch("http://localhost:8080/redesocial", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          "whatsapp":`http://wa.me/55${ddd}${telefone}`,
+          "likedin":linkedin,
+          "instagram":instagram,
+          "github":github
+        }),
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+      })
+    } else{
+      await fetch("http://localhost:8080/redesocial", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          "likedin":linkedin,
+          "instagram":instagram,
+          "github":github
+        }),
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+      })
+    }
   
     } catch (error) {
       console.error("Erro geral:", error.message);

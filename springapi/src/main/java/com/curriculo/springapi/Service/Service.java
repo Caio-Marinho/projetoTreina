@@ -1,5 +1,5 @@
 package com.curriculo.springapi.Service;
-
+import com.curriculo.springapi.Service.VerficarURL;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import com.curriculo.springapi.image.Image;
@@ -38,9 +38,14 @@ public class Service {
     }
 
     public static ResponseEntity<RedeSocial> cadastrarRede(RedeSocial redeSocial, RedeSocialRepository redeSocialRepository){
-        if (redeSocialRepository.buscarRedesSocial(redeSocial.getGithub(), redeSocial.getInstagram(), redeSocial.getLinkedin(), redeSocial.getWhatsapp()).size() > 0){
-            return ResponseEntity.status(HttpStatus.OK).body(redeSocial);
-
+        if(!VerficarURL.isValidUrl(redeSocial.getGithub())){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        } else if (!VerficarURL.isValidUrl(redeSocial.getInstagram())){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        } else if (!VerficarURL.isValidUrl(redeSocial.getLinkedin())){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }else if (redeSocialRepository.buscarRedesSocial(redeSocial.getGithub(), redeSocial.getInstagram(), redeSocial.getLinkedin(), redeSocial.getWhatsapp()).size() > 0){
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(redeSocialRepository.save(redeSocial));
     }
