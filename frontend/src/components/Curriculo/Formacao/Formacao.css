@@ -1,0 +1,14 @@
+.formacao{ 
+    left: 20px;
+}
+.graduacao{
+    position: relative;
+    top: 10px;
+    left: 20px;
+}
+  
+  .tecnico{
+    position: relative;
+    top: 10px;
+    left: -10px;
+}

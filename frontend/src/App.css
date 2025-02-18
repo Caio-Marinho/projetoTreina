@@ -3,101 +3,9 @@ body {
   margin-top: 100px; 
   width: 100%;
 }
-
-.centralizar{
-  display: flex;
-  justify-content: center;
-  align-items: space-between;
-  margin-left: 10px;
-  margin-right: 10px;
+.limite{
+  overflow: hidden;
 }
-
-.cor{
-  background: linear-gradient(90deg, gray 0%, silver 100%);
-  color: black;
-}
-
-.titulo-secao {
-  position: relative;
-}
-
-.identificacao{
-  bottom: 70px;
-  left: 20px;
-  margin-top: 150px;
-}
-
-.formacao{ 
-  left: 20px;
-}
-
-.image {
-   border-radius: 50%;
-   width: 100px;
-}
-
-.espaco {
-  position: relative;
-  bottom: 20px;
-  left: 20px;
-}
-
-.espaco-entre {
-  position: relative;
-  margin-top: 10px;
-  margin-left: 5.6px;
-  margin-right: 50px;
-  left: 20px;
-}
-
-.deslocamento {
-  position: relative;
-  top: 10px;
-  left: 10px;
-}
-
-.graduacao{
-  position: relative;
-  top: 10px;
-  left: 20px;
-}
-
-.tecnico{
-  position: relative;
-  top: 10px;
-  left: -10px;
-}
-
-.experiencia{
-  position: relative;
-  top: 10px;
-  left: 20px;
-}
-
-.voluntario{
-  position: relative;
-  top: 10px;
-  left: 30px;
-}
-
-.extra{
-  position: relative;
-  top: 10px;
-  left: 30px;
-}
-
-.projetos{
-  position: relative;
-  top: 10px;
-  left: 30px;
-}
-
-.redes{
-  position: relative;
-  top: 10px;
-  left: 30px;
-}
-
 .footer{
   position: relative;
   top: 10px;
@@ -107,17 +15,7 @@ body {
   align-items: center;
 }
 
-.form-floating label {
-  transition: all 0.2s ease-in-out;
-}
-
-.form-floating input:focus + label,
-.form-floating input:not(:placeholder-shown) + label {
-  transform: translateY(-1.5rem);
-  font-size: 0.85rem;
-  opacity: 0.8;
-}
-
 #root {
+  width: 100%;
   margin: 0 auto;
 }

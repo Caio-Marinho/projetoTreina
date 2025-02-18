@@ -1,0 +1,17 @@
+.titulo-secao {
+    position: relative;
+  }
+  
+  .espaco-entre {
+    position: relative;
+    margin-top: 10px;
+    margin-left: 5.6px;
+    margin-right: 50px;
+    left: 20px;
+  }
+  
+  .deslocamento {
+    position: relative;
+    top: 10px;
+    left: 10px;
+  }
