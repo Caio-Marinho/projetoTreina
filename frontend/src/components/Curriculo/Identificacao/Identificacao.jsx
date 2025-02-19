@@ -1,18 +1,22 @@
 import './Identificacao.css'
-
+import Curriculo from '../../../assets/js/Curriculo'
 function Indentificao() {
+  document.addEventListener(
+    "DOMContentLoaded",
+    Curriculo()
+  )
     return(
       <>
       <h3 className="titulo-secao identificacao">Identificação</h3>
         <div className="container">
        <div className="row row-cols-12 espaco">
               <div className="col">
-                <p1><b>Nome: </b>Caio Gabriel Marinho Oliveira do Nascimento</p1><br/>
+                <p1 id="nome"></p1><br/>
               </div>
             </div>
         <div className="row row-cols-12 espaco">
               <div className="col">
-                <p1><b>Endreço: </b>Rua Rodrigues ferreira Nº 45, Várzea,50810020, Recife,Pernambuco</p1>
+                <p1 id="Endereco"></p1>
               </div>
             </div>
           <div className="row row-cols-auto ">
