@@ -14,6 +14,12 @@ import Identificacao from './components/Curriculo/Identificacao/Identificacao';
 import Formacao from './components/Curriculo/Formacao/Formacao';
 import Experiencia from './components/Curriculo/Experiencia/Experiencia';
 import Redes from './components/Curriculo/Redes/Redes';
+import Curriculo from './assets/js/Curriculo'
+
+document.addEventListener(
+  "DOMContentLoaded",
+  Curriculo()
+)
 
 function Hearder() {
   return (
@@ -49,7 +55,7 @@ function Footer(){
   return(
     <>
       <footer className="footer">
-        <p className="copyright">&copy;Copyright 2025 - Desenvolvido por Caio Marinho</p>
+        <p className="copyright">&copy;Copyright 2025 - Desenvolvido e Todos os Direiro Resevados - Caio Marinho</p>
       </footer>
     </>
   )

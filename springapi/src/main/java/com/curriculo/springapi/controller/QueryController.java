@@ -25,6 +25,12 @@ public class QueryController {
         return ResponseEntity.status(HttpStatus.OK).body(usuarioRepository.buscarPessoa());
     }
 
+    @GetMapping("/experiencia")
+    public ResponseEntity<List<Atributos>> getQueryExperiencia() {
+        
+        return ResponseEntity.status(HttpStatus.OK).body(usuarioRepository.buscarPessoaExperiencia());
+    }
+
     @Autowired
     private UsuarioRepository usuarioRepository;
 }

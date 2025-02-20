@@ -1,10 +1,7 @@
 import './Identificacao.css'
-import Curriculo from '../../../assets/js/Curriculo'
+
 function Indentificao() {
-  document.addEventListener(
-    "DOMContentLoaded",
-    Curriculo()
-  )
+
     return(
       <>
       <h3 className="titulo-secao identificacao">Identificação</h3>
@@ -22,10 +19,10 @@ function Indentificao() {
           <div className="row row-cols-auto ">
             
             <div className="col espaco-entre">
-              <p1><b>Telefone: </b><a href="http://wa.me/5581979056770" className='remover' target="_blank">
-              (81) 9 7905-6770 
+              <p1 ><b>Telefone: </b><a href="" className='remover' id="whatsapp" target="_blank">
+            <span id="telefone"></span>
+            <span id="contato"></span>
               </a></p1>
-              <img src="/img/icons8-whatsapp-48.png" alt="" />
             </div>
           </div>
         </div>

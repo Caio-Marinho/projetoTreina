@@ -1,14 +1,16 @@
 .formacao{ 
     left: 20px;
 }
-.graduacao{
+.Graduacao{
     position: relative;
     top: 10px;
     left: 20px;
+    text-decoration: none; 
 }
   
-  .tecnico{
+  .Tecnico{
     position: relative;
     top: 10px;
     left: -10px;
+    text-decoration: none; 
 }

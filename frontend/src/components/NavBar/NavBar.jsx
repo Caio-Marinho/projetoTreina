@@ -29,7 +29,7 @@ function NavBar() {
       <MyThemeSwitcher/>
     </div>
     <a className="navbar-brand" href="/visualizar">
-      <img className="image" src="./img/generico.jpg" alt="" ></img>
+      <img className="image" id="logo" src="./img/generico.jpg" alt="" ></img>
   </a>
   </div>
 </nav>

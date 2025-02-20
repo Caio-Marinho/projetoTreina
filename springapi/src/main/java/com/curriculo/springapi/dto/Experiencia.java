@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 public class Experiencia {
     
     private int id;
-    private String tipo;
-    private String atividade;
+    private String Tipo;
+    private String Atividade;
     private LocalDate inicio;
     private LocalDate fim;
 }
