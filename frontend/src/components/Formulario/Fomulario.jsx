@@ -1,4 +1,5 @@
 import enviar from '../../assets/js/Enviar';
+import atualizar from '../../assets/js/Atualizar';
 import Imagem from '../image/TrocarImagem';
 import Formacao from '../Formacao/Formacoes';
 import Experiencia from '../Experiencia/Experiencia';
@@ -100,6 +101,7 @@ function Formulario() {
           <Experiencia />
           <Imagem />
           <button type="submit" id="enviar" className="btn btn-primary">Cadastrar</button>
+          <button type="submit" id="atualizar" onClick={atualizar} className="btn btn-primary">Atualizar</button>
         </form>
       </div>
       </>

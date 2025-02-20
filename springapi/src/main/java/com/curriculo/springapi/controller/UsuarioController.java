@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.curriculo.springapi.model.Usuario;
 import com.curriculo.springapi.repository.UsuarioRepository;
 import com.curriculo.springapi.Service.Service;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
 
 @RestController
 @RequestMapping("/usuario")
@@ -28,6 +31,11 @@ public class UsuarioController {
     @GetMapping
     public ResponseEntity<List<Usuario>> buscarTodos() {
         return ResponseEntity.status(HttpStatus.OK).body(usuarioRepository.findAll());
+    }
+
+    @PutMapping
+    public ResponseEntity<Usuario> atualizar(@RequestBody Usuario usuario) {
+        return Service.verificaEmail(usuario, usuarioRepository);
     }
 
     @Autowired
